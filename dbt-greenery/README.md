@@ -12,20 +12,35 @@ A: 130 users
 
 Q: On average, how many orders do we receive per hour?
 ``` sql
-WITH df AS 
-  (SELECT 
+WITH df AS (
+    SELECT 
         DATE_TRUNC('hour', created_at) AS date_hour
        ,COUNT(*) AS num_orders 
-   FROM stg_orders 
-   WHERE created_at IS NOT NULL 
-   GROUP BY 1)
-SELECT AVG(num_orders) from df;
+    FROM stg_orders 
+    WHERE created_at IS NOT NULL 
+    GROUP BY 1)
+SELECT AVG(num_orders) 
+FROM df;
 ```
 A: 8.125 --> 8 orders per hour on average
 
 ---
 Q: On average, how long does an order take from being placed to being delivered?
-A:
+``` sql
+WITH df AS (
+    SELECT 
+        order_id
+       ,created_at
+       ,delivered_at
+       ,delivered_at - created_at AS order_duration 
+    FROM stg_orders 
+    WHERE 
+        created_at IS NOT NULL 
+        AND delivered_at IS NOT NULL) 
+SELECT AVG(order_duration) 
+FROM df
+```
+A:  3 days, 22 hours, 13 minutes, 10 seconds, 504.451 milliseconds
 
 ---
 Q: How many users have only made one purchase? Two purchases? Three+ purchases?
