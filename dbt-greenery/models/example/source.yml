@@ -19,34 +19,34 @@ sources:
       - name: users 
         loaded_at_field: created_at
         description: >
-          Contains users information
+          Contains user information 
 
       - name: addresses 
         loaded_at_field: address_id
         description: >
-          Contains addresses information
+          Contains the user shipping address
 
       - name: events 
         loaded_at_field: event_id
         description: >
-          Contains events information
+          Contains events and session info from the webshop
 
       - name: orders 
         loaded_at_field: order_id
         description: >
-          Contains orders information
+          Contains order details and tracking status
 
       - name: order_items 
         loaded_at_field: order_id
         description: >
-          Contains order_items information
+          Contains order_items included in each order
 
       - name: products 
         loaded_at_field: product_id
         description: >
-          Contains products information
+          Contains products and price information
 
       - name: promos 
         loaded_at_field: promo_id
         description: >
-          Contains promos information
+          Contains promo details
