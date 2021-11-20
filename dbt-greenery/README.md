@@ -8,10 +8,22 @@ FROM dbt_davidp.stg_users;
 ```
 A: 130 users
 
-3. On average, how many orders do we receive per hour?
-4. On average, how long does an order take from being placed to being delivered?
-5. How many users have only made one purchase? Two purchases? Three+ purchases?
-6. On average, how many unique sessions do we have per hour?
+Q: On average, how many orders do we receive per hour?
+``` sql
+WITH df AS 
+  (SELECT 
+        DATE_TRUNC('hour', created_at) AS date_hour
+       ,COUNT(*) AS num_orders 
+   FROM stg_orders 
+   WHERE created_at IS NOT NULL 
+   GROUP BY 1)
+SELECT AVG(num_orders) from df
+```
+A: 8.125 --> 8 orders per hour on average
+
+5. On average, how long does an order take from being placed to being delivered?
+6. How many users have only made one purchase? Two purchases? Three+ purchases?
+7. On average, how many unique sessions do we have per hour?
 
 
 ### Resources:
