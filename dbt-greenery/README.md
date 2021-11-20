@@ -19,10 +19,10 @@ WITH df AS (
     FROM stg_orders 
     WHERE created_at IS NOT NULL 
     GROUP BY 1)
-SELECT AVG(num_orders) 
+SELECT ROUND(AVG(num_orders), 2)
 FROM df;
 ```
-A: 8.125 --> 8 orders per hour on average
+A: 8.12 --> 8 orders per hour on average
 
 ---
 Q: On average, how long does an order take from being placed to being delivered?
