@@ -62,9 +62,12 @@ SELECT
 FROM df 
 GROUP BY 1
 ```
-A: 1 order   : 25 users
-   2 orders  : 22 users
-   3+ orders : 81 users
+A:
+| orders_group | num_users |
+|--------------|-----------|
+| 1 order      | 25 users  |
+| 2 orders     | 22 users  |
+| 3+ orders    | 81 users  |
 
 ---
 Q: On average, how many unique sessions do we have per hour?
