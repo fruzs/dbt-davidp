@@ -1,10 +1,10 @@
-Welcome to your new dbt project!
+### Week 1 
 
-### Using the starter project
-
-Try running the following commands:
-- dbt run
-- dbt test
+1. How many users do we have?
+2. On average, how many orders do we receive per hour?
+3. On average, how long does an order take from being placed to being delivered?
+4. How many users have only made one purchase? Two purchases? Three+ purchases?
+5. On average, how many unique sessions do we have per hour?
 
 
 ### Resources:
