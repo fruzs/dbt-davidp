@@ -44,7 +44,27 @@ A:  3 days, 22 hours, 13 minutes, 10 seconds, 504.451 milliseconds
 
 ---
 Q: How many users have only made one purchase? Two purchases? Three+ purchases?
-A:
+``` sql
+WITH df AS (
+    SELECT 
+        user_id
+       ,COUNT(*) AS num_orders
+       ,CASE 
+          WHEN COUNT(*) = 1 THEN '1_order' 
+          WHEN COUNT(*) = 2 THEN '2_orders' 
+          ELSE '3+orders' 
+        END AS user_group  
+    FROM stg_orders 
+    GROUP BY 1) 
+SELECT 
+    user_group
+   ,COUNT(*) 
+FROM df 
+GROUP BY 1
+```
+A: 1 order   : 25 users
+   2 orders  : 22 users
+   3+ orders : 81 users
 
 ---
 Q: On average, how many unique sessions do we have per hour?
