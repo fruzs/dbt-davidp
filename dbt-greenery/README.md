@@ -37,7 +37,8 @@ WITH df AS (
     WHERE 
         created_at IS NOT NULL 
         AND delivered_at IS NOT NULL) 
-SELECT AVG(order_duration) 
+SELECT 
+    AVG(order_duration) 
 FROM df
 ```
 A:  3 days, 22 hours, 13 minutes, 10 seconds, 504.451 milliseconds
@@ -71,8 +72,19 @@ A:
 
 ---
 Q: On average, how many unique sessions do we have per hour?
-A:
-
+``` sql
+WITH df AS (
+    SELECT 
+        DATE_TRUNC('hour', created_at)
+       ,COUNT(DISTINCT session_id) AS num_uq_sessions 
+    FROM stg_events 
+    WHERE created_at IS NOT NULL 
+    GROUP BY 1)
+SELECT 
+    ROUND(AVG(num_uq_sessions), 2) 
+FROM df
+```
+A: 7.27 --> 7 unique sessions per hour on average
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
