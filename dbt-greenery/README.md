@@ -25,10 +25,15 @@ A: 8.125 --> 8 orders per hour on average
 
 ---
 Q: On average, how long does an order take from being placed to being delivered?
+A:
+
 ---
 Q: How many users have only made one purchase? Two purchases? Three+ purchases?
+A:
+
 ---
 Q: On average, how many unique sessions do we have per hour?
+A:
 
 
 ### Resources:
