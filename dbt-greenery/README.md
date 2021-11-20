@@ -19,7 +19,7 @@ WITH df AS
    FROM stg_orders 
    WHERE created_at IS NOT NULL 
    GROUP BY 1)
-SELECT AVG(num_orders) from df
+SELECT AVG(num_orders) from df;
 ```
 A: 8.125 --> 8 orders per hour on average
 
