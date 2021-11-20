@@ -2,7 +2,7 @@ version: 2
 
 sources:
 
-  - name: tutorial # name of the source 
+  - name: raw # name of the source 
     schema: public # this is the schema our raw data lives in
     database: dbt # this is the name of our database
 
@@ -16,7 +16,37 @@ sources:
       error_after: {count: 48, period: hour}
 
     tables:
-      - name: superheroes 
+      - name: users 
         loaded_at_field: created_at
         description: >
-          Contains demographic information about each superhero
+          Contains users information
+
+      - name: addresses 
+        loaded_at_field: address_id
+        description: >
+          Contains addresses information
+
+      - name: events 
+        loaded_at_field: event_id
+        description: >
+          Contains events information
+
+      - name: orders 
+        loaded_at_field: order_id
+        description: >
+          Contains orders information
+
+      - name: order_items 
+        loaded_at_field: order_id
+        description: >
+          Contains order_items information
+
+      - name: products 
+        loaded_at_field: product_id
+        description: >
+          Contains products information
+
+      - name: promos 
+        loaded_at_field: promo_id
+        description: >
+          Contains promos information

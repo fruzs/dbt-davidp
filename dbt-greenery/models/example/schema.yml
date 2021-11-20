@@ -21,7 +21,7 @@ models:
           - not_null
   
   - name: stg_superheroes
-    description: Demographics about each superhero such as name, hair color, height and weight. 
+    description: "Demographics about each superhero such as name, hair color, height and weight" 
     columns:
       - name: name
         tests:
@@ -32,3 +32,76 @@ models:
       - name: weight
         tests:
           - positive_values
+
+
+  - name: stg_users 
+    description: "Contains users information"
+    columns:
+      - name: user_id
+      - name: first_name
+      - name: last_name
+      - name: email
+      - name: phone_number
+      - name: created_at
+      - name: updated_at
+      - name: address_id
+
+  - name: stg_addresses 
+    description: "Contains addresses information"
+    columns:
+      - name: address_id
+      - name: address
+      - name: zipcode
+      - name: state
+      - name: country
+
+  - name: stg_events 
+    description: "Contains events information"
+    columns:
+      - name: event_id
+      - name: session_id
+      - name: user_id
+      - name: event_type
+      - name: page_url
+      - name: created_at
+
+  - name: stg_orders 
+    description: "Contains orders information"
+    columns:
+      - name: order_id
+      - name: promo_id
+      - name: user_id
+      - name: address_id
+      - name: created_at
+      - name: order_cost
+      - name: shipping_cost
+      - name: order_total
+      - name: tracking_id
+      - name: shipping_service
+      - name: estimated_delivery_at
+      - name: delivered_at
+      - name: status
+
+
+  - name: stg_order_items 
+    description: "Contains order_items information"
+    columns:
+      - name: order_id
+      - name: product_id
+      - name: quantity
+
+
+  - name: stg_products 
+    description: "Contains products information"
+    columns:
+      - name: product_id
+      - name: name
+      - name: price
+      - name: quantity
+
+  - name: stg_promos 
+    description: "Contains promos information"
+    columns:
+      - name: promo_id
+      - name: discount
+      - name: status
