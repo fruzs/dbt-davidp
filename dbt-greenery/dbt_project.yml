@@ -1,6 +1,11 @@
 name: 'dbt_greenery'
 version: '1.0.0'
+
 config-version: 2
+
+vars:
+  'dbt_date:time_zone': 'Europe/Vienna'
+
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'greenery'
