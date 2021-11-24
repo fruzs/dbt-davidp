@@ -1,16 +1,18 @@
 ### Week 1 
 
 Q: How many users do we have?
+A: 130 users
+
 ``` sql
 SELECT 
   COUNT(DISTINCT user_id) 
 FROM dbt_davidp.stg_users;
 ```
-A: 130 users
-
 ---
 
 Q: On average, how many orders do we receive per hour?
+A: 8.12 --> 8 orders per hour on average
+
 ``` sql
 WITH df AS (
     SELECT 
@@ -22,10 +24,11 @@ WITH df AS (
 SELECT ROUND(AVG(num_orders), 2)
 FROM df;
 ```
-A: 8.12 --> 8 orders per hour on average
-
 ---
+
 Q: On average, how long does an order take from being placed to being delivered?
+A:  3 days, 22 hours, 13 minutes, 10 seconds, 504.451 milliseconds
+
 ``` sql
 WITH df AS (
     SELECT 
@@ -41,10 +44,16 @@ SELECT
     AVG(order_duration) 
 FROM df
 ```
-A:  3 days, 22 hours, 13 minutes, 10 seconds, 504.451 milliseconds
-
 ---
+
 Q: How many users have only made one purchase? Two purchases? Three+ purchases?
+A:
+| orders_group | num_users |
+|--------------|-----------|
+| 1 order      | 25 users  |
+| 2 orders     | 22 users  |
+| 3+ orders    | 81 users  |
+
 ``` sql
 WITH df AS (
     SELECT 
@@ -63,15 +72,11 @@ SELECT
 FROM df 
 GROUP BY 1
 ```
-A:
-| orders_group | num_users |
-|--------------|-----------|
-| 1 order      | 25 users  |
-| 2 orders     | 22 users  |
-| 3+ orders    | 81 users  |
 
 ---
 Q: On average, how many unique sessions do we have per hour?
+A: 7.27 --> 7 unique sessions per hour on average
+
 ``` sql
 WITH df AS (
     SELECT 
@@ -84,4 +89,3 @@ SELECT
     ROUND(AVG(num_uq_sessions), 2) 
 FROM df
 ```
-A: 7.27 --> 7 unique sessions per hour on average
