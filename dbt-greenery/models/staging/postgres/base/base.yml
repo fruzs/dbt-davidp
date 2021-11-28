@@ -1,0 +1,41 @@
+version: 2
+
+models: 
+  - name: base_postgres__addresses 
+    description: "Contains addresses information"
+    columns:
+      - name: address_id
+        tests:
+          - unique
+          - not_null
+      - name: address
+        tests:
+          - not_null
+      - name: zipcode
+        tests:
+          - not_null
+      - name: state
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['United States']
+  
+  - name: base_postgres__promos 
+    description: "Contains promos information"
+    columns:
+      - name: promo_id
+        tests:
+          - unique
+          - not_null
+      - name: discount_percent
+        tests:
+          - not_null
+          - positive_values
+      - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['active','inactive']
