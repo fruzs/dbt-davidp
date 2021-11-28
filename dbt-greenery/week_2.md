@@ -1,13 +1,35 @@
 ### Week 2 
 
-Q: What is our user repeat rate (users who purchased 2 or more times / users who purchased)
-? 
-A: 
+Q: What is our user repeat rate (users who purchased 2 or more times / users who purchased) 
+A: 0.80 repeat rate
 
 ``` sql
-SELECT 
-  COUNT(DISTINCT user_id) 
-FROM dbt_davidp.stg_users;
+WITH total_users AS (
+	SELECT
+		1 AS id,
+		COUNT(DISTINCT user_id) AS total_num_users
+	FROM stg_postgres__orders
+)
+, df AS (
+	SELECT
+		user_id,
+		COUNT(*) AS num_orders
+	FROM stg_postgres__orders
+	GROUP BY 1
+	HAVING COUNT(*) > 1
+)
+, repeat_users AS (
+	SELECT
+		1 AS id,
+		COUNT(user_id) AS repeat_num_users
+	FROM df
+)
+SELECT
+	tu.total_num_users,
+	ru.repeat_num_users,
+	round((ru.repeat_num_users / tu.total_num_users :: numeric),2) AS repeat_rate
+FROM total_users tu
+	JOIN repeat_users ru ON tu.id = ru.id;
 ```
 ---
 
