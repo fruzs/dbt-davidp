@@ -2,6 +2,6 @@
 
 SELECT 
         promo_id
-      , discout as discount
+      , discout as discount_percent
       , status
 FROM {{ source('raw', 'promos') }}
