@@ -2,7 +2,7 @@
 version: 2
 
 models:
-  - name: stg_users 
+  - name: stg_postgres__users 
     description: "Contains users information"
     columns:
       - name: user_id
@@ -17,7 +17,7 @@ models:
       - name: updated_at
       - name: address_id
 
-  - name: stg_addresses 
+  - name: stg_postgres__addresses 
     description: "Contains addresses information"
     columns:
       - name: address_id
@@ -29,7 +29,7 @@ models:
       - name: state
       - name: country
 
-  - name: stg_events 
+  - name: stg_postgres__events 
     description: "Contains events information"
     columns:
       - name: event_id
@@ -42,7 +42,7 @@ models:
       - name: page_url
       - name: created_at
 
-  - name: stg_orders 
+  - name: stg_postgres__orders 
     description: "Contains orders information"
     columns:
       - name: order_id
@@ -67,9 +67,13 @@ models:
       - name: estimated_delivery_at
       - name: delivered_at
       - name: status
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['pending','preparing','shipped','delivered']
 
 
-  - name: stg_order_items 
+  - name: stg_postgres__order_items 
     description: "Contains order_items information"
     columns:
       - name: order_id
@@ -78,7 +82,7 @@ models:
         tests:
           - positive_values
 
-  - name: stg_products 
+  - name: stg_postgres__products 
     description: "Contains products information"
     columns:
       - name: product_id
@@ -93,7 +97,7 @@ models:
         tests:
           - positive_values
 
-  - name: stg_promos 
+  - name: stg_postgres__promos 
     description: "Contains promos information"
     columns:
       - name: promo_id

@@ -11,6 +11,6 @@
   }}
 
   SELECT * 
-  FROM {{ ref('stg_products') }}
+  FROM {{ ref('stg_postgres__products') }}
 
 {% endsnapshot %}

@@ -1,11 +1,7 @@
 name: 'dbt_greenery'
-version: '1.0.0'
 
 config-version: 2
-
-vars:
-  'dbt_date:time_zone': 'Europe/Vienna'
-
+version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'greenery'
@@ -33,7 +29,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_project:
-    # Config indicated by + and applies to all files under models/example/
-    example:
+  dbt_greenery:
+    staging:
       +materialized: view
+
+
+vars:
+  'dbt_date:time_zone': 'Europe/Vienna'
