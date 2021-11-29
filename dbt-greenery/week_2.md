@@ -35,6 +35,8 @@ A: Wanted to organize the models based on business function, while remaining fle
 
 Q: Include an image of your model DAGs  
 A:
+![dbt-dag](https://user-images.githubusercontent.com/53421809/143797958-fa13721e-fc19-4e6b-affb-fd95d5037657.png)
+
 
 ---
 Q: What assumptions are you making about each model? (i.e. why are you adding each test?)  
