@@ -34,6 +34,11 @@ models:
       postgres:
         base:
           +materialized: ephemeral
+    marts:
+      core:
+        +materialized: table
+        intermediate:
+          +materialized: view
 
 
 vars:
