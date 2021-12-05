@@ -1,12 +1,20 @@
 ### Week 2 
 
 Q: What is our overall conversion rate?
-A: 
+A: 36.1% 
 
 ``` sql
 SELECT 
-  COUNT(DISTINCT user_id) 
-FROM dbt_davidp.stg_users;
+  COUNT(DISTINCT session_id) AS total_num_sessions
+  , (SELECT 
+        COUNT(DISTINCT session_id) 
+     FROM fct_events
+     WHERE event_type = 'checkout') AS checkout_num_sessions
+     ,ROUND((SELECT 
+        COUNT(DISTINCT session_id) 
+     FROM fct_events
+     WHERE event_type = 'checkout')  / COUNT(DISTINCT session_id)::numeric * 100,2) AS conversion_rate
+     FROM fct_events;
 ```
 ---
 
