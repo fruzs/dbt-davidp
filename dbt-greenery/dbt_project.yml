@@ -30,6 +30,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   dbt_greenery:
+    post-hook:
+      - "{{ grant_select('reporting') }}"
+
     staging:
       postgres:
         base:
@@ -55,6 +58,8 @@ models:
         intermediate:
           +materialized: view
 
+on-run-end:
+  - "grant usage on schema {{ schema }} to reporting"
 
 vars:
   'dbt_date:time_zone': 'Europe/Vienna'
