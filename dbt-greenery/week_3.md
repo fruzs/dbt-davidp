@@ -68,6 +68,9 @@ GROUP BY 1
 ```
 ---
 
-Q: Include an image of the model DAG to show how it has been simplified/improved by adding macros and packages.
-A:
+Q: Include an image of the model DAG to show how it has been simplified/improved by adding macros and packages.  
+A:  
+![dbt-dag (1)](https://user-images.githubusercontent.com/53421809/144859973-f4732d31-cd4a-407e-a246-49dab1b0fdf6.png)
+
+
 
